@@ -149,6 +149,11 @@ abstract class AbstractSimpleHtmlDom
         $nameOrig = $name;
         $name = \strtolower($name);
 
+        // Fix for PHP 8.3
+        if (is_null($value)) {
+            $value = ''; 
+        }
+        
         switch ($name) {
             case 'outerhtml':
             case 'outertext':
